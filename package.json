@@ -6,7 +6,7 @@
   "author": "Brandon Au <tech.brandonau@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "webpack serve --hot --progress"
+    "dev": "webpack serve --hot --progress --mode development"
   },
   "devDependencies": {
     "@babel/core": "^7.13.10",
