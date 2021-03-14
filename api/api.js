@@ -4,8 +4,10 @@ const port = 3000;
 
 const basePath = '/materials'
 
+const materials = [];
+
 apiServer.get(basePath, (request, response) => {
-	response.send('hello world');
+	response.send(materials);
 });
 
 apiServer.listen(port, () => {
