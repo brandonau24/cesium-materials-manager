@@ -10,7 +10,7 @@ const basePath = '/materials'
 let materials = [];
 
 apiServer.get(basePath, (request, response) => {
-	response.send(materials);
+	response.json(materials);
 });
 
 apiServer.put(`${basePath}/:id`, (request, response) => {
