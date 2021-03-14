@@ -1,13 +1,15 @@
 {
     "env": {
         "browser": true,
-        "es2021": true
+        "es2021": true,
+        "jest": true
     },
     "extends": [
         "eslint:recommended",
         "plugin:react/recommended",
         "airbnb",
-        "airbnb/hooks"
+        "airbnb/hooks",
+        "plugin:testing-library/recommended"
     ],
     "parserOptions": {
         "ecmaFeatures": {
@@ -28,7 +30,6 @@
         ],
 		"react/jsx-indent-props": ["error", "tab"
         ],
-		"import/no-extraneous-dependencies": ["error",
-            { "devDependencies": ["**/*.test.js?(x)", "setupFile.js"] }]
+		"import/no-extraneous-dependencies": ["error", { "devDependencies": ["**/*.test.js?(x)", "setupFile.js"] }]
 	}
 }

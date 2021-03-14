@@ -1,5 +1,7 @@
 import React from 'react';
 
-const CesiumMaterialsManager = () => <div>hello world!</div>;
+const CesiumMaterialsManager = () => (
+	<h2>Materials</h2>
+);
 
 export default CesiumMaterialsManager;
