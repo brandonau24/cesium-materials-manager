@@ -5,7 +5,9 @@
     },
     "extends": [
         "eslint:recommended",
-        "plugin:react/recommended"
+        "plugin:react/recommended",
+        "airbnb",
+        "airbnb/hooks"
     ],
     "parserOptions": {
         "ecmaFeatures": {
@@ -18,5 +20,15 @@
         "react"
     ],
     "rules": {
-    }
+		"comma-dangle": "off",
+		"indent": ["error", "tab"],
+		"linebreak-style": "off",
+		"no-tabs": "off",
+		"react/jsx-indent": ["error", "tab"
+        ],
+		"react/jsx-indent-props": ["error", "tab"
+        ],
+		"import/no-extraneous-dependencies": ["error",
+            { "devDependencies": ["**/*.test.js?(x)", "setupFile.js"] }]
+	}
 }
