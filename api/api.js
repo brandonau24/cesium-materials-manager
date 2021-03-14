@@ -2,6 +2,8 @@ const express = require('express');
 const { v4: uuidv4 } = require('uuid');
 
 const apiServer = express();
+apiServer.use(express.json());
+
 const port = 3000;
 const basePath = '/materials'
 
@@ -13,13 +15,13 @@ apiServer.get(basePath, (request, response) => {
 
 apiServer.post(basePath, (request, response) => {
 	const newMaterial = {
-		...request,
+		...request.body,
 		id: uuidv4()
 	}
 
 	materials.push(newMaterial);
 
-	response.status(201).send(newMaterial);
+	response.status(201).json(newMaterial);
 });
 
 apiServer.listen(port, () => {
