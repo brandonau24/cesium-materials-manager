@@ -7,7 +7,7 @@ apiServer.use(express.json());
 const port = 3000;
 const basePath = '/materials'
 
-const materials = [];
+let materials = [];
 
 apiServer.get(basePath, (request, response) => {
 	response.send(materials);
@@ -41,6 +41,13 @@ apiServer.post(basePath, (request, response) => {
 	materials.push(newMaterial);
 
 	response.status(201).json(newMaterial);
+});
+
+apiServer.delete(`${basePath}/:id`, (request, response) => {
+	const materialToDelete = request.params.id;
+	materials = materials.filter((material) => material.id !== materialToDelete);
+
+	response.sendStatus(204);
 });
 
 apiServer.listen(port, () => {
