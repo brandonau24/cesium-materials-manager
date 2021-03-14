@@ -2,7 +2,9 @@ const express = require('express');
 const apiServer = express();
 const port = 3000;
 
-apiServer.get('/', (request, response) => {
+const basePath = '/materials'
+
+apiServer.get(basePath, (request, response) => {
 	response.send('hello world');
 });
 
