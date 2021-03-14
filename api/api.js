@@ -13,6 +13,25 @@ apiServer.get(basePath, (request, response) => {
 	response.send(materials);
 });
 
+apiServer.put(`${basePath}/:id`, (request, response) => {
+	const materialId = request.params.id;
+	const materialIndex = materials.findIndex((material) => material.id === materialId);
+
+	if (materialIndex >= 0) {
+		const materialToBeUpdated = materials[materialIndex];
+
+		materials[materialIndex] = {
+			...materialToBeUpdated,
+			...request.body
+		};
+
+		response.sendStatus(204);
+	}
+	else {
+		response.send(404, `Material with id ${materialId} was not found`);
+	}
+});
+
 apiServer.post(basePath, (request, response) => {
 	const newMaterial = {
 		...request.body,
