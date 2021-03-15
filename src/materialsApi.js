@@ -6,6 +6,9 @@ const materialsApi = {
 	addMaterial: (material) => {
 		axios.post(baseUrl, material)
 			.then((response) => response.data);
+	},
+	deleteMaterial: (materialId) => {
+		axios.delete(`${baseUrl}/${materialId}`).then((response) => response);
 	}
 };
 

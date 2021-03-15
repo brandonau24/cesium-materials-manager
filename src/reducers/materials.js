@@ -14,10 +14,20 @@ export const addMaterialThunk = createAsyncThunk(
 	}
 );
 
+export const deleteMaterialThunk = createAsyncThunk(
+	`${sliceName}/delete`,
+	async (materialId) => {
+		const response = await materialsApi.deleteMaterial(materialId);
+
+		return response;
+	}
+);
+
 const materialsSlice = createSlice({
 	name: sliceName,
 	initialState,
 	reducers: {
+		delete: (state, action) => state.filter((material) => material.id !== action.payload)
 	},
 	extraReducers: {
 		[addMaterialThunk.fulfilled]: (state, action) => {
