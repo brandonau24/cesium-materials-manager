@@ -32,6 +32,15 @@ export const modifyMaterialThunk = createAsyncThunk(
 	}
 );
 
+export const getMaterialsThunk = createAsyncThunk(
+	`${sliceName}/all`,
+	async () => {
+		const response = await materialsApi.getMaterials();
+
+		return response;
+	}
+);
+
 const materialsSlice = createSlice({
 	name: sliceName,
 	initialState,
@@ -51,7 +60,8 @@ const materialsSlice = createSlice({
 	extraReducers: {
 		[addMaterialThunk.fulfilled]: (state, action) => {
 			state.push(action.payload);
-		}
+		},
+		[getMaterialsThunk.fulfilled]: (state, action) => action.payload
 	}
 });
 

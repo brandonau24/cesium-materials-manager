@@ -1,6 +1,8 @@
 import store from 'cesiumMaterialsManager/store';
 import materialsApi from 'materialsApi';
-import reducer, { addMaterialThunk, deleteMaterialThunk, modifyMaterialThunk } from 'reducers/materials'
+import reducer, {
+	addMaterialThunk, deleteMaterialThunk, modifyMaterialThunk, getMaterialsThunk
+} from 'reducers/materials';
 
 describe('Materials reducer', () => {
 	test('adding material', () => {
@@ -105,6 +107,44 @@ describe('Materials reducer', () => {
 
 		store.dispatch(modifyMaterialThunk(material)).then(() => {
 			expect(materialsApi.modifyMaterial).toHaveBeenCalledWith(material);
+		});
+	});
+
+	test('get all materials', () => {
+		const materials = [
+			{
+				name: 'material',
+				color: 'black',
+				costPerCubicMeter: 0.25,
+				volume: 1000,
+				deliveryDate: '2021-03-14',
+				id: 'id'
+			},
+			{
+				name: 'material',
+				color: 'black',
+				costPerCubicMeter: 0.25,
+				volume: 1000,
+				deliveryDate: '2021-03-14',
+				id: 'id'
+			},
+			{
+				name: 'material',
+				color: 'black',
+				costPerCubicMeter: 0.25,
+				volume: 1000,
+				deliveryDate: '2021-03-14',
+				id: 'id'
+			}
+		];
+
+		materialsApi.getMaterials = jest.fn().mockReturnValueOnce(materials);
+
+		return store.dispatch(getMaterialsThunk()).then(() => {
+			expect(materialsApi.getMaterials).toBeCalledTimes(1);
+			expect(store.getState()).toEqual({
+				materials
+			});
 		});
 	});
 });

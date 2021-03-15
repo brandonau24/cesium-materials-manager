@@ -12,6 +12,9 @@ const materialsApi = {
 	},
 	modifyMaterial: (material) => {
 		axios.put(`${baseUrl}/${material.id}`).then((response) => response);
+	},
+	getMaterials: () => {
+		axios.get(baseUrl).then((response) => response.data);
 	}
 };
 
