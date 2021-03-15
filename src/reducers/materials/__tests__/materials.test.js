@@ -1,6 +1,6 @@
 import store from 'cesiumMaterialsManager/store';
 import materialsApi from 'materialsApi';
-import reducer, { addMaterialThunk, deleteMaterialThunk } from 'reducers/materials'
+import reducer, { addMaterialThunk, deleteMaterialThunk, modifyMaterialThunk } from 'reducers/materials'
 
 describe('Materials reducer', () => {
 	test('adding material', () => {
@@ -101,12 +101,10 @@ describe('Materials reducer', () => {
 			id: 'id'
 		};
 
-		const modifiedMaterial = {
-			...material,
-			color: 'green',
-			volume: 10000
-		};
+		materialsApi.modifyMaterial = jest.fn();
 
-		const intial
+		store.dispatch(modifyMaterialThunk(material)).then(() => {
+			expect(materialsApi.modifyMaterial).toHaveBeenCalledWith(material);
+		});
 	});
 });

@@ -9,6 +9,9 @@ const materialsApi = {
 	},
 	deleteMaterial: (materialId) => {
 		axios.delete(`${baseUrl}/${materialId}`).then((response) => response);
+	},
+	modifyMaterial: (material) => {
+		axios.put(`${baseUrl}/${material.id}`).then((response) => response);
 	}
 };
 

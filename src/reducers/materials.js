@@ -23,6 +23,15 @@ export const deleteMaterialThunk = createAsyncThunk(
 	}
 );
 
+export const modifyMaterialThunk = createAsyncThunk(
+	`${sliceName}/modify`,
+	async (material) => {
+		const response = await materialsApi.modifyMaterial(material);
+
+		return response;
+	}
+);
+
 const materialsSlice = createSlice({
 	name: sliceName,
 	initialState,
