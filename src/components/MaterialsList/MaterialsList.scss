@@ -1,0 +1,15 @@
+@import 'styles/colors.scss';
+
+.materials-list {
+	display: grid;
+	background-color: $dark-secondary;
+	border: 0.0625rem solid gray;
+	width: 15.625rem;
+	height: 18.75rem;
+
+	.__no-materials {
+		justify-self: center;
+		align-self: center;
+		color: gray;
+	}
+}

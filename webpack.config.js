@@ -53,7 +53,7 @@ module.exports = {
 			template: './template.html'
 		}),
 		new MiniCssExtractPlugin({
-			filename: 'style.scss'
+			filename: 'styles.css'
 		})
 	],
 	devtool: 'source-map'
