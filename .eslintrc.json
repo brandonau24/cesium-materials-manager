@@ -31,5 +31,15 @@
 		"react/jsx-indent-props": ["error", "tab"
         ],
 		"import/no-extraneous-dependencies": ["error", { "devDependencies": ["**/*.test.js?(x)", "setupFile.js"] }]
-	}
+	},
+    "overrides": [
+        {
+            "files": [
+                "**/reducers/*.js"
+            ],
+            "rules": {
+                "no-param-reassign": "off" //disabling this rule in reducers folder due to Immer allowing what looks like "direct state mutations"
+            }
+        }
+    ]
 }

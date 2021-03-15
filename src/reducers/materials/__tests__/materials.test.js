@@ -62,4 +62,32 @@ describe('Materials reducer', () => {
 			expect(materialsApi.deleteMaterial).toHaveBeenCalledWith('id');
 		});
 	});
+
+	test('modify material', () => {
+		const material = {
+			name: 'material',
+			color: 'black',
+			costPerCubicMeter: 0.25,
+			volume: 1000,
+			deliveryDate: '2021-03-14',
+			id: 'id'
+		};
+
+		const modifiedMaterial = {
+			...material,
+			color: 'green',
+			volume: 10000
+		};
+
+		const initialState = [material];
+
+		const action = {
+			type: 'materials/modify',
+			payload: modifiedMaterial
+		};
+
+		const newState = reducer(initialState, action);
+
+		expect(newState).toEqual([modifiedMaterial]);
+	});
 });

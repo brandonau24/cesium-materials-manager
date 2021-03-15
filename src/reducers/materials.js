@@ -27,7 +27,17 @@ const materialsSlice = createSlice({
 	name: sliceName,
 	initialState,
 	reducers: {
-		delete: (state, action) => state.filter((material) => material.id !== action.payload)
+		delete: (state, action) => state.filter((material) => material.id !== action.payload),
+		modify: (state, action) => {
+			const materialToUpdate = state.findIndex((material) => material.id === action.payload.id);
+
+			if (materialToUpdate >= 0) {
+				state[materialToUpdate] = {
+					...state[materialToUpdate],
+					...action.payload
+				};
+			}
+		}
 	},
 	extraReducers: {
 		[addMaterialThunk.fulfilled]: (state, action) => {
