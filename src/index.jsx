@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import regeneratorRuntime from 'regenerator-runtime';
 
 import CesiumMaterialsManager from './CesiumMaterialsManager';
 import store from './cesiumMaterialsManager/store';
