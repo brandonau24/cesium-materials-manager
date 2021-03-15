@@ -41,5 +41,8 @@
                 "no-param-reassign": "off" //disabling this rule in reducers folder due to Immer allowing what looks like "direct state mutations"
             }
         }
-    ]
+    ],
+    "settings": {
+        "import/resolver": "webpack"
+    }
 }
