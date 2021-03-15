@@ -5,7 +5,7 @@ const apiServer = express();
 apiServer.use(express.json());
 
 const port = 3000;
-const basePath = '/materials'
+const basePath = '/materials';
 
 let materials = [];
 
@@ -26,8 +26,7 @@ apiServer.put(`${basePath}/:id`, (request, response) => {
 		};
 
 		response.sendStatus(204);
-	}
-	else {
+	} else {
 		response.send(404, `Material with id ${materialId} was not found`);
 	}
 });
@@ -36,7 +35,7 @@ apiServer.post(basePath, (request, response) => {
 	const newMaterial = {
 		...request.body,
 		id: uuidv4()
-	}
+	};
 
 	materials.push(newMaterial);
 
@@ -52,4 +51,4 @@ apiServer.delete(`${basePath}/:id`, (request, response) => {
 
 apiServer.listen(port, () => {
 	console.log(`API Server is listening on port ${port}`);
-})
+});

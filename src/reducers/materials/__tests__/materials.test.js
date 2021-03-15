@@ -90,4 +90,23 @@ describe('Materials reducer', () => {
 
 		expect(newState).toEqual([modifiedMaterial]);
 	});
+
+	test('modify material on server', () => {
+		const material = {
+			name: 'material',
+			color: 'black',
+			costPerCubicMeter: 0.25,
+			volume: 1000,
+			deliveryDate: '2021-03-14',
+			id: 'id'
+		};
+
+		const modifiedMaterial = {
+			...material,
+			color: 'green',
+			volume: 10000
+		};
+
+		const intial
+	});
 });
