@@ -1,9 +1,10 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen } from 'test-utils';
 import MaterialListItem from 'components/MaterialsList/MaterialListItem';
 
 test('renders color of material', () => {
 	const material = {
+		id: '1',
 		name: 'Gravel',
 		color: 'gray',
 		costPerCubicMeter: 0.25,
@@ -11,7 +12,7 @@ test('renders color of material', () => {
 		deliveryDate: '2021-3-15'
 	};
 
-	render(<MaterialListItem material={material} />);
+	render(<MaterialListItem materialId="1" />, { preloadedState: { materials: [material] } });
 
 	const materialColorElement = screen.getByTestId('material-color');
 	expect(materialColorElement).toHaveStyle('color: gray');
@@ -20,6 +21,7 @@ test('renders color of material', () => {
 
 test('renders material name', () => {
 	const material = {
+		id: '1',
 		name: 'Gravel',
 		color: 'gray',
 		costPerCubicMeter: 0.25,
@@ -27,13 +29,14 @@ test('renders material name', () => {
 		deliveryDate: '2021-3-15'
 	};
 
-	render(<MaterialListItem material={material} />);
+	render(<MaterialListItem materialId="1" />, { preloadedState: { materials: [material] } });
 
 	expect(screen.getByText(/Gravel/)).toBeVisible();
 });
 
 test('renders material volume amount', () => {
 	const material = {
+		id: '1',
 		name: 'Gravel',
 		color: 'gray',
 		costPerCubicMeter: 0.25,
@@ -41,7 +44,7 @@ test('renders material volume amount', () => {
 		deliveryDate: '2021-3-15'
 	};
 
-	render(<MaterialListItem material={material} />);
+	render(<MaterialListItem materialId="1" />, { preloadedState: { materials: [material] } });
 
 	expect(screen.getByText(/1000\sm3/)).toBeVisible();
 });

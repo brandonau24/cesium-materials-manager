@@ -6,20 +6,20 @@ import MaterialListItem from './MaterialListItem';
 
 import './MaterialsList.scss';
 
-const materialsSelector = createSelector(
+const materialsByIdSelector = createSelector(
 	(state) => state.materials,
-	(materials) => materials
+	(materials) => materials.map((material) => material.id)
 );
 
 const MaterialsList = () => {
-	const materials = useSelector(materialsSelector);
+	const materialsById = useSelector(materialsByIdSelector);
 	let listBody;
 
-	if (!materials || !materials.length) {
+	if (!materialsById || !materialsById.length) {
 		listBody = <div className="__no-materials"><i>No materials</i></div>;
 	} else {
-		listBody = materials.map((material) => (
-			<MaterialListItem key={material.id} material={material} />
+		listBody = materialsById.map((id) => (
+			<MaterialListItem key={id} materialId={id} />
 		));
 	}
 

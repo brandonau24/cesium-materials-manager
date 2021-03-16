@@ -1,23 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
+import { createSelector } from 'reselect';
 
-const MaterialListItem = ({ material }) => (
-	<button type="button">
-		<div className="circle" data-testid="material-color" style={{ color: material.color }} />
-		<div>{material.name}</div>
-		<div>{`${material.volume} m3`}</div>
-	</button>
+const getMaterialByIdSelector = createSelector(
+	(state) => state.materials,
+	(state, materialId) => materialId,
+	(materials, materialId) => materials.find((material) => material.id === materialId)
 );
 
+const MaterialListItem = ({ materialId }) => {
+	const material = useSelector((state) => getMaterialByIdSelector(state, materialId));
+
+	return (
+		<button type="button">
+			<div className="circle" data-testid="material-color" style={{ color: material.color }} />
+			<div>{material.name}</div>
+			<div>{`${material.volume} m3`}</div>
+		</button>
+	);
+};
+
 MaterialListItem.propTypes = {
-	material: PropTypes.shape({
-		id: PropTypes.string,
-		name: PropTypes.string,
-		color: PropTypes.string,
-		costPerCubicMeter: PropTypes.number,
-		volume: PropTypes.number,
-		deliveryDate: PropTypes.string
-	}).isRequired
+	materialId: PropTypes.string.isRequired
 };
 
 export default MaterialListItem;
