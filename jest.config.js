@@ -83,6 +83,7 @@ module.exports = {
     materialsApi$: '<rootDir>/src/materialsApi.js',
     "reducers/(.*)": '<rootDir>/src/components/reducers/$1',
     "selectors/(.*)": '<rootDir>/src/components/selectors/$1',
+    "thunks/(.*)": '<rootDir>/src/components/thunks/$1',
     "cesiumMaterialsManager/store": '<rootDir>/src/cesiumMaterialsManager/store.js',
     "^components/(.*)": '<rootDir>/src/components/$1',
     "\\.s?css$": 'identity-obj-proxy',

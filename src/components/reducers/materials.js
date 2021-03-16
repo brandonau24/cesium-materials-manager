@@ -1,48 +1,10 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import materialsApi from 'materialsApi';
-
-const sliceName = 'materials';
+import { createSlice } from '@reduxjs/toolkit';
+import { addMaterialThunk, getMaterialsThunk } from 'thunks/materials';
 
 const initialState = [];
 
-export const addMaterialThunk = createAsyncThunk(
-	`${sliceName}/add`,
-	async (material) => {
-		const response = await materialsApi.addMaterial(material);
-
-		return response;
-	}
-);
-
-export const deleteMaterialThunk = createAsyncThunk(
-	`${sliceName}/delete`,
-	async (materialId) => {
-		const response = await materialsApi.deleteMaterial(materialId);
-
-		return response;
-	}
-);
-
-export const modifyMaterialThunk = createAsyncThunk(
-	`${sliceName}/modify`,
-	async (material) => {
-		const response = await materialsApi.modifyMaterial(material);
-
-		return response;
-	}
-);
-
-export const getMaterialsThunk = createAsyncThunk(
-	`${sliceName}/all`,
-	async () => {
-		const response = await materialsApi.getMaterials();
-
-		return response;
-	}
-);
-
 const materialsSlice = createSlice({
-	name: sliceName,
+	name: 'materials',
 	initialState,
 	reducers: {
 		delete: (state, action) => state.filter((material) => material.id !== action.payload),

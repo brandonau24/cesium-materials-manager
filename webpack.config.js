@@ -40,6 +40,7 @@ module.exports = {
 			'cesiumMaterialsManager/store': path.resolve(srcPath, 'cesiumMaterialsManager', 'store.js'),
 			reducers: path.resolve(srcPath, 'components', 'reducers'),
 			selectors: path.resolve(srcPath, 'components', 'selectors'),
+			thunks: path.resolve(srcPath, 'components', 'thunks'),
 			materialsApi: path.resolve(srcPath, 'materialsApi.js'),
 			components: path.resolve(srcPath, 'components/'),
 			styles: path.resolve(srcPath, 'styles/')
