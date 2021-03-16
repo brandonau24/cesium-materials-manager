@@ -8,6 +8,7 @@ const NumberField = ({
 	label,
 	step,
 	defaultNumberValue,
+	min,
 	...restProps
 }) => {
 	const [numberValue, setNumberValue] = useState(defaultNumberValue);
@@ -28,16 +29,18 @@ const NumberField = ({
 
 NumberField.propTypes = {
 	id: PropTypes.string.isRequired,
-	label: PropTypes.string.isRequired,
+	label: PropTypes.node.isRequired,
 	step: PropTypes.number,
 	onChangeCallback: PropTypes.func,
-	defaultNumberValue: PropTypes.number
+	defaultNumberValue: PropTypes.number,
+	min: PropTypes.number
 };
 
 NumberField.defaultProps = {
 	step: 1,
 	onChangeCallback: () => { },
-	defaultNumberValue: 0
+	defaultNumberValue: 0,
+	min: 0
 };
 
 export default NumberField;

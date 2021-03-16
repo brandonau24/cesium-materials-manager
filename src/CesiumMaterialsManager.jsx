@@ -5,6 +5,7 @@ import { createSelector } from 'reselect';
 import MaterialsList from 'components/MaterialsList/MaterialsList';
 
 import './CesiumMaterialsManager.scss';
+import MaterialEditPanel from './components/MaterialEditPanel/MaterialEditPanel';
 
 const totalMaterialsCostSelector = createSelector(
 	(state) => state.materials,
@@ -25,6 +26,7 @@ const CesiumMaterialsManager = () => {
 		<div id="cesium-materials-manager">
 			<h2>Materials</h2>
 			<MaterialsList />
+			<MaterialEditPanel />
 			<div className="__total-materials-cost">{`Total Cost: $${totalMaterialsCost}`}</div>
 		</div>
 	);
