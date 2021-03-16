@@ -13,5 +13,8 @@ test('renders Materials header', () => {
 test('display a cost of 0 when there are no materials', () => {
 	render(<CesiumMaterialsManager />, { initialState: { materials: [] } });
 
+	expect(screen.getByText(/Total\sCost:\s\$0\.00/)).toBeVisible();
+});
+
 	expect(screen.getByText(/\$0\.00/)).toBeVisible();
 });

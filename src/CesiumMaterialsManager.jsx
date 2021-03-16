@@ -25,7 +25,7 @@ const CesiumMaterialsManager = () => {
 		<div id="cesium-materials-manager">
 			<h2>Materials</h2>
 			<MaterialsList />
-			<div className="__total-materials-cost">{`$${totalMaterialsCost}`}</div>
+			<div className="__total-materials-cost">{`Total Cost: $${totalMaterialsCost}`}</div>
 		</div>
 	);
 };
