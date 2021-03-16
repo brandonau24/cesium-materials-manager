@@ -1,10 +1,11 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { createSelector } from 'reselect';
 
 import MaterialsList from 'components/MaterialsList/MaterialsList';
 import Button from 'components/common/form/Button';
 import MaterialEditPanel from 'components/MaterialEditPanel/MaterialEditPanel';
+import { getMaterialsThunk } from 'thunks/materials';
 
 import './CesiumMaterialsManager.scss';
 
@@ -22,6 +23,11 @@ const totalMaterialsCostSelector = createSelector(
 
 const CesiumMaterialsManager = () => {
 	const totalMaterialsCost = useSelector(totalMaterialsCostSelector);
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		dispatch(getMaterialsThunk());
+	});
 
 	return (
 		<div id="cesium-materials-manager">

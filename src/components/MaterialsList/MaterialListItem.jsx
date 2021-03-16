@@ -9,7 +9,7 @@ const MaterialListItem = ({ materialId }) => {
 	const material = useSelector((state) => getMaterialById(state, materialId));
 
 	return (
-		<button type="button">
+		<button data-testid="material-list-item" type="button">
 			<div className="circle" data-testid="material-color" style={{ color: material.color }} />
 			<div>{material.name}</div>
 			<div>{`${material.volume} m3`}</div>
