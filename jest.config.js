@@ -81,7 +81,8 @@ module.exports = {
   // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
   moduleNameMapper: {
     materialsApi$: '<rootDir>/src/materialsApi.js',
-    "reducers/(.*)": '<rootDir>/src/reducers/$1',
+    "reducers/(.*)": '<rootDir>/src/components/reducers/$1',
+    "selectors/(.*)": '<rootDir>/src/components/selectors/$1',
     "cesiumMaterialsManager/store": '<rootDir>/src/cesiumMaterialsManager/store.js',
     "^components/(.*)": '<rootDir>/src/components/$1',
     "\\.s?css$": 'identity-obj-proxy',

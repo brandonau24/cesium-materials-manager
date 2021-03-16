@@ -1,16 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
-import { createSelector } from 'reselect';
-
-const getMaterialByIdSelector = createSelector(
-	(state) => state.materials,
-	(state, materialId) => materialId,
-	(materials, materialId) => materials.find((material) => material.id === materialId)
-);
+import { makeGetMaterialByIdSelector } from 'selectors/materials';
 
 const MaterialListItem = ({ materialId }) => {
-	const material = useSelector((state) => getMaterialByIdSelector(state, materialId));
+	const getMaterialById = makeGetMaterialByIdSelector();
+
+	const material = useSelector((state) => getMaterialById(state, materialId));
 
 	return (
 		<button type="button">

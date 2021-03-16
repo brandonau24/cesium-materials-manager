@@ -1,22 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
-import { createSelector } from 'reselect';
+
 import TextInputField from 'components/common/form/TextInputField';
 import ColorPicker from 'components/common/form/ColorPicker';
 import NumberField from 'components/common/form/NumberField';
 import DatePicker from 'components/common/form/DatePicker';
+import { makeGetMaterialByIdSelector } from 'selectors/materials';
 
 import './MaterialEditPanel.scss';
 
-const getMaterialByIdSelector = createSelector(
-	(state) => state.materials,
-	(state, materialId) => materialId,
-	(materials, materialId) => materials.find((material) => material.id === materialId)
-);
-
 const MaterialEditPanel = ({ materialId }) => {
-	const material = useSelector((state) => getMaterialByIdSelector(state, materialId));
+	const getMaterialById = makeGetMaterialByIdSelector();
+
+	const material = useSelector((state) => getMaterialById(state, materialId));
 
 	let materialEditPanelBody;
 	if (material) {
