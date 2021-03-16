@@ -3,7 +3,7 @@ import { render, screen } from 'test-utils';
 import CesiumMaterialsManager from '../CesiumMaterialsManager';
 
 test('renders Materials header', () => {
-	render(<CesiumMaterialsManager />, { initialState: { materials: [] } });
+	render(<CesiumMaterialsManager />, { preloadedState: { materials: [] } });
 
 	const materialsHeader = screen.getByRole('heading', { level: 2 });
 
@@ -11,7 +11,7 @@ test('renders Materials header', () => {
 });
 
 test('display a cost of 0 when there are no materials', () => {
-	render(<CesiumMaterialsManager />, { initialState: { materials: [] } });
+	render(<CesiumMaterialsManager />, { preloadedState: { materials: [] } });
 
 	expect(screen.getByText(/Total\sCost:\s\$0\.00/)).toBeVisible();
 });

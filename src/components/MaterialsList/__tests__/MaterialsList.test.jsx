@@ -4,7 +4,7 @@ import MaterialsList from 'components/MaterialsList/MaterialsList';
 
 test('shows no data case when there are no materials', () => {
 	render(<MaterialsList />, {
-		initialState: {
+		preloadedState: {
 			materials: []
 		}
 	});
