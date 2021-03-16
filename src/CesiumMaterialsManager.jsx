@@ -3,9 +3,10 @@ import { useSelector } from 'react-redux';
 import { createSelector } from 'reselect';
 
 import MaterialsList from 'components/MaterialsList/MaterialsList';
+import Button from 'components/common/form/Button';
+import MaterialEditPanel from 'components/MaterialEditPanel/MaterialEditPanel';
 
 import './CesiumMaterialsManager.scss';
-import MaterialEditPanel from './components/MaterialEditPanel/MaterialEditPanel';
 
 const totalMaterialsCostSelector = createSelector(
 	(state) => state.materials,
@@ -25,6 +26,16 @@ const CesiumMaterialsManager = () => {
 	return (
 		<div id="cesium-materials-manager">
 			<h2>Materials</h2>
+			<Button
+				className="add-button"
+				text="Add"
+				onClickCallback={() => { }}
+			/>
+			<Button
+				className="delete-button"
+				text="Delete"
+				onClickCallback={() => { }}
+			/>
 			<MaterialsList />
 			<MaterialEditPanel />
 			<div className="__total-materials-cost">{`Total Cost: $${totalMaterialsCost}`}</div>
