@@ -16,5 +16,34 @@ test('display a cost of 0 when there are no materials', () => {
 	expect(screen.getByText(/Total\sCost:\s\$0\.00/)).toBeVisible();
 });
 
-	expect(screen.getByText(/\$0\.00/)).toBeVisible();
+test('displays total cost of materials', () => {
+	const preloadedState = {
+		materials: [
+			{
+				name: 'material',
+				color: 'black',
+				costPerCubicMeter: 0.25,
+				volume: 1000,
+				deliveryDate: '2021-03-14'
+			},
+			{
+				name: 'material',
+				color: 'black',
+				costPerCubicMeter: 0.25,
+				volume: 1000,
+				deliveryDate: '2021-03-14'
+			},
+			{
+				name: 'material',
+				color: 'black',
+				costPerCubicMeter: 0.25,
+				volume: 1000,
+				deliveryDate: '2021-03-14'
+			}
+		]
+	};
+
+	render(<CesiumMaterialsManager />, { preloadedState });
+
+	expect(screen.getByText(/\$750\.00/)).toBeVisible();
 });
