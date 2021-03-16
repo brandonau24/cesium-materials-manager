@@ -6,9 +6,10 @@ const TextInputField = ({
 	id,
 	onChangeCallback,
 	label,
+	defaultInputValue,
 	...restProps
 }) => {
-	const [inputValue, setInputValue] = useState('');
+	const [inputValue, setInputValue] = useState(defaultInputValue);
 
 	const onInputValueChange = (event) => setInputValue(event.target.value);
 
@@ -27,11 +28,13 @@ const TextInputField = ({
 TextInputField.propTypes = {
 	id: PropTypes.string.isRequired,
 	label: PropTypes.string.isRequired,
-	onChangeCallback: PropTypes.func
+	onChangeCallback: PropTypes.func,
+	defaultInputValue: PropTypes.string
 };
 
 TextInputField.defaultProps = {
-	onChangeCallback: () => { }
+	onChangeCallback: () => { },
+	defaultInputValue: ''
 };
 
 export default TextInputField;

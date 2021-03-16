@@ -2,13 +2,14 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-const TextInputField = ({
+const ColorPicker = ({
 	id,
 	onChangeCallback,
 	label,
+	defaultColor,
 	...restProps
 }) => {
-	const [color, setColor] = useState('');
+	const [color, setColor] = useState(defaultColor);
 
 	const onColorChange = (event) => setColor(event.target.value);
 
@@ -24,14 +25,16 @@ const TextInputField = ({
 	);
 };
 
-TextInputField.propTypes = {
+ColorPicker.propTypes = {
 	id: PropTypes.string.isRequired,
 	label: PropTypes.string.isRequired,
-	onChangeCallback: PropTypes.func
+	onChangeCallback: PropTypes.func,
+	defaultColor: PropTypes.string
 };
 
-TextInputField.defaultProps = {
-	onChangeCallback: () => { }
+ColorPicker.defaultProps = {
+	onChangeCallback: () => { },
+	defaultColor: ''
 };
 
-export default TextInputField;
+export default ColorPicker;

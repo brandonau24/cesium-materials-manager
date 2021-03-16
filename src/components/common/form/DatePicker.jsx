@@ -2,13 +2,14 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-const TextInputField = ({
+const DatePicker = ({
 	id,
 	onChangeCallback,
 	label,
+	defaultDate,
 	...restProps
 }) => {
-	const [date, setDate] = useState(0);
+	const [date, setDate] = useState(defaultDate);
 
 	const onDateChange = (event) => setDate(event.target.value);
 
@@ -24,14 +25,16 @@ const TextInputField = ({
 	);
 };
 
-TextInputField.propTypes = {
+DatePicker.propTypes = {
 	id: PropTypes.string.isRequired,
 	label: PropTypes.string.isRequired,
-	onChangeCallback: PropTypes.func
+	onChangeCallback: PropTypes.func,
+	defaultDate: PropTypes.string
 };
 
-TextInputField.defaultProps = {
-	onChangeCallback: () => { }
+DatePicker.defaultProps = {
+	onChangeCallback: () => { },
+	defaultDate: new Date(Date.now()).toISOString().split('T')[0]
 };
 
-export default TextInputField;
+export default DatePicker;

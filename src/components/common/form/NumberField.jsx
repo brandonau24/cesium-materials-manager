@@ -2,15 +2,15 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-const TextInputField = ({
+const NumberField = ({
 	id,
 	onChangeCallback,
 	label,
 	step,
+	defaultNumberValue,
 	...restProps
 }) => {
-	const min = 0;
-	const [numberValue, setNumberValue] = useState(min);
+	const [numberValue, setNumberValue] = useState(defaultNumberValue);
 
 	const onNumberValueChange = (event) => setNumberValue(event.target.value);
 
@@ -26,16 +26,18 @@ const TextInputField = ({
 	);
 };
 
-TextInputField.propTypes = {
+NumberField.propTypes = {
 	id: PropTypes.string.isRequired,
 	label: PropTypes.string.isRequired,
 	step: PropTypes.number,
-	onChangeCallback: PropTypes.func
+	onChangeCallback: PropTypes.func,
+	defaultNumberValue: PropTypes.number
 };
 
-TextInputField.defaultProps = {
+NumberField.defaultProps = {
 	step: 1,
-	onChangeCallback: () => { }
+	onChangeCallback: () => { },
+	defaultNumberValue: 0
 };
 
-export default TextInputField;
+export default NumberField;
