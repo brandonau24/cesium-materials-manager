@@ -16,6 +16,7 @@ test('shows material list items when there are materials', () => {
 	const preloadedState = {
 		materials: [
 			{
+				id: '1',
 				name: 'material',
 				color: 'black',
 				costPerCubicMeter: 0.25,
@@ -23,6 +24,7 @@ test('shows material list items when there are materials', () => {
 				deliveryDate: '2021-03-14'
 			},
 			{
+				id: '2',
 				name: 'material',
 				color: 'black',
 				costPerCubicMeter: 0.25,
@@ -30,6 +32,7 @@ test('shows material list items when there are materials', () => {
 				deliveryDate: '2021-03-14'
 			},
 			{
+				id: '3',
 				name: 'material',
 				color: 'black',
 				costPerCubicMeter: 0.25,
