@@ -20,6 +20,7 @@ test('displays total cost of materials', () => {
 	const preloadedState = {
 		materials: [
 			{
+				id: '1',
 				name: 'material',
 				color: 'black',
 				costPerCubicMeter: 0.25,
@@ -27,6 +28,7 @@ test('displays total cost of materials', () => {
 				deliveryDate: '2021-03-14'
 			},
 			{
+				id: '2',
 				name: 'material',
 				color: 'black',
 				costPerCubicMeter: 0.25,
@@ -34,6 +36,7 @@ test('displays total cost of materials', () => {
 				deliveryDate: '2021-03-14'
 			},
 			{
+				id: '3',
 				name: 'material',
 				color: 'black',
 				costPerCubicMeter: 0.25,
