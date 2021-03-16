@@ -2,6 +2,8 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { createSelector } from 'reselect';
 
+import MaterialListItem from './MaterialListItem';
+
 import './MaterialsList.scss';
 
 const materialsSelector = createSelector(
@@ -15,6 +17,10 @@ const MaterialsList = () => {
 
 	if (!materials || !materials.length) {
 		listBody = <div className="__no-materials"><i>No materials</i></div>;
+	} else {
+		listBody = materials.map((material) => (
+			<MaterialListItem key={material.id} material={material} />
+		));
 	}
 
 	return (
@@ -22,9 +28,6 @@ const MaterialsList = () => {
 			{listBody}
 		</div>
 	);
-	// return (
-	// 	materials.map((material) =>	<MaterialListItem material={material} />);
-	// );
 };
 
 export default MaterialsList;
