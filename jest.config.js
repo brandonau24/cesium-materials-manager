@@ -84,7 +84,8 @@ module.exports = {
     "reducers/(.*)": '<rootDir>/src/reducers/$1',
     "cesiumMaterialsManager/store": '<rootDir>/src/cesiumMaterialsManager/store.js',
     "^components/(.*)": '<rootDir>/src/components/$1',
-    "\\.s?css$": 'identity-obj-proxy'
+    "\\.s?css$": 'identity-obj-proxy',
+    "^test-utils$": '<rootDir>/src/test-utils.jsx'
   },
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
