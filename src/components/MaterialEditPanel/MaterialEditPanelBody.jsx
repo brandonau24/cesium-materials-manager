@@ -7,6 +7,8 @@ import NumberField from 'components/common/form/NumberField';
 import DatePicker from 'components/common/form/DatePicker';
 import { modifyMaterialThunk } from 'thunks/materials';
 
+import './MaterialEditPanelBody.scss';
+
 const MaterialEditPanelBody = ({ material }) => {
 	const dispatch = useDispatch();
 
@@ -99,6 +101,7 @@ const MaterialEditPanelBody = ({ material }) => {
 				onChangeCallback={nameCallback}
 			/>
 			<ColorPicker
+				className="circle"
 				id="color-picker"
 				label="Color"
 				value={material.color}

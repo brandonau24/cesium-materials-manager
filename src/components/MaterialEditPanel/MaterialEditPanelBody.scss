@@ -1,0 +1,6 @@
+@import 'styles/shapes.scss';
+
+.circle {
+	@include circle(2.5rem, 2.5rem);
+	border: none;
+}
