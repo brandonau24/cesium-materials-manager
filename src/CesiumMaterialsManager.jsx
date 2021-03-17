@@ -23,8 +23,8 @@ const totalMaterialsCostSelector = createSelector(
 );
 
 const defaultMaterial = {
-	name: '',
-	color: 'black',
+	name: 'New Material',
+	color: '#42d8b7',
 	costPerCubicMeter: 0,
 	volume: 0,
 	deliveryDate: new Date(Date.now()).toISOString().split('T')[0]
