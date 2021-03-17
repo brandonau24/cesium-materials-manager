@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react';
-import { useSelector, useDispatch, shallowEqual} from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { createSelector } from 'reselect';
 
 import MaterialsList from 'components/MaterialsList/MaterialsList';
 import Button from 'components/common/form/Button';
 import MaterialEditPanel from 'components/MaterialEditPanel/MaterialEditPanel';
-import { makeGetCurrentMatieralIdSelector } from 'components/selectors/currentMaterialId';
+import { makeGetCurrentMatieralIdSelector } from 'selectors/currentMaterialId';
+import { defaultMaterial } from 'selectors/materials';
 import { getMaterialsThunk, addMaterialThunk, deleteMaterialThunk } from 'thunks/materials';
 
 import './CesiumMaterialsManager.scss';
@@ -22,23 +23,15 @@ const totalMaterialsCostSelector = createSelector(
 	}
 );
 
-const defaultMaterial = {
-	name: 'New Material',
-	color: '#42d8b7',
-	costPerCubicMeter: 0,
-	volume: 0,
-	deliveryDate: new Date(Date.now()).toISOString().split('T')[0]
-};
-
 const CesiumMaterialsManager = () => {
 	const getCurrentMaterialIdSelector = makeGetCurrentMatieralIdSelector();
 	const materialId = useSelector(getCurrentMaterialIdSelector);
-	const totalMaterialsCost = useSelector(totalMaterialsCostSelector, shallowEqual);
+	const totalMaterialsCost = useSelector(totalMaterialsCostSelector);
 	const dispatch = useDispatch();
 
 	useEffect(() => {
 		dispatch(getMaterialsThunk());
-	});
+	}, []);
 
 	const addMaterialCallback = () => {
 		dispatch(addMaterialThunk(defaultMaterial));

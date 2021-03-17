@@ -15,7 +15,7 @@ const DatePicker = ({
 
 	useEffect(() => {
 		onChangeCallback(date);
-	});
+	}, [date]);
 
 	return (
 		<>

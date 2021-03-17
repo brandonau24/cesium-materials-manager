@@ -15,7 +15,7 @@ const TextInputField = ({
 
 	useEffect(() => {
 		onChangeCallback(inputValue);
-	});
+	}, [inputValue]);
 
 	return (
 		<>

@@ -15,7 +15,7 @@ const ColorPicker = ({
 
 	useEffect(() => {
 		onChangeCallback(color);
-	});
+	}, [color]);
 
 	return (
 		<>

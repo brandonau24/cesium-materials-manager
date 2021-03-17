@@ -24,7 +24,7 @@ export const modifyMaterialThunk = createAsyncThunk(
 	async (material) => {
 		const response = await materialsApi.modifyMaterial(material);
 
-		return response;
+		// return response;
 	}
 );
 

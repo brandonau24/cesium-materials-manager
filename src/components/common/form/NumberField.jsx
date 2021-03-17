@@ -13,11 +13,11 @@ const NumberField = ({
 }) => {
 	const [numberValue, setNumberValue] = useState(defaultNumberValue);
 
-	const onNumberValueChange = (event) => setNumberValue(event.target.value);
+	const onNumberValueChange = (event) => setNumberValue(Number.parseFloat(event.target.value));
 
 	useEffect(() => {
 		onChangeCallback(numberValue);
-	});
+	}, [numberValue]);
 
 	return (
 		<>
