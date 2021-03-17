@@ -5,6 +5,7 @@ import { createSelector } from 'reselect';
 import MaterialsList from 'components/MaterialsList/MaterialsList';
 import Button from 'components/common/form/Button';
 import MaterialEditPanel from 'components/MaterialEditPanel/MaterialEditPanel';
+import { makeGetCurrentMatieralIdSelector } from 'components/selectors/currentMaterialId';
 import { getMaterialsThunk, addMaterialThunk, deleteMaterialThunk } from 'thunks/materials';
 
 import './CesiumMaterialsManager.scss';
@@ -30,7 +31,8 @@ const defaultMaterial = {
 };
 
 const CesiumMaterialsManager = () => {
-	const materialId = useSelector((state) => state.currentMaterialId);
+	const getCurrentMaterialIdSelector = makeGetCurrentMatieralIdSelector();
+	const materialId = useSelector(getCurrentMaterialIdSelector);
 	const totalMaterialsCost = useSelector(totalMaterialsCostSelector, shallowEqual);
 	const dispatch = useDispatch();
 

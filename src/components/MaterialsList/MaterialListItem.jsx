@@ -2,15 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import { makeGetMaterialByIdSelector } from 'selectors/materials';
+import { makeGetCurrentMatieralIdSelector } from 'selectors/currentMaterialId';
 
 import './MaterialListItem.scss';
 
 const MaterialListItem = ({ materialId }) => {
 	const dispatch = useDispatch();
-	const getMaterialById = makeGetMaterialByIdSelector();
+	const getMaterialByIdSelector = makeGetMaterialByIdSelector();
+	const getCurrentMaterialIdSelector = makeGetCurrentMatieralIdSelector();
 
-	const currentMaterialId = useSelector((state) => state.currentMaterialId);
-	const material = useSelector((state) => getMaterialById(state, materialId));
+	const currentMaterialId = useSelector(getCurrentMaterialIdSelector);
+	const material = useSelector((state) => getMaterialByIdSelector(state, materialId));
 
 	const onClick = () => dispatch({
 		type: 'currentMaterialId/change',
