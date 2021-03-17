@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 
 import TextInputField from 'components/common/form/TextInputField';
@@ -7,12 +6,15 @@ import ColorPicker from 'components/common/form/ColorPicker';
 import NumberField from 'components/common/form/NumberField';
 import DatePicker from 'components/common/form/DatePicker';
 import { makeGetMaterialByIdSelector } from 'selectors/materials';
+import { makeGetCurrentMatieralIdSelector } from 'selectors/currentMaterialId';
 
 import './MaterialEditPanel.scss';
 
-const MaterialEditPanel = ({ materialId }) => {
+const MaterialEditPanel = () => {
 	const getMaterialById = makeGetMaterialByIdSelector();
+	const getCurrentMaterialIdSelector = makeGetCurrentMatieralIdSelector();
 
+	const materialId = useSelector(getCurrentMaterialIdSelector);
 	const material = useSelector((state) => getMaterialById(state, materialId));
 
 	let materialEditPanelBody;
@@ -52,18 +54,10 @@ const MaterialEditPanel = ({ materialId }) => {
 	}
 
 	return (
-		<div className="material-edit-panel">
+		<div data-testid="material-edit-panel" className="material-edit-panel">
 			{materialEditPanelBody}
 		</div>
 	);
-};
-
-MaterialEditPanel.propTypes = {
-	materialId: PropTypes.string
-};
-
-MaterialEditPanel.defaultProps = {
-	materialId: null
 };
 
 export default MaterialEditPanel;
