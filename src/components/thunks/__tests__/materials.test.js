@@ -28,7 +28,8 @@ test('add material', () => {
 					...payload,
 					id: 'id'
 				}
-			]
+			],
+			currentMaterialId: null
 		});
 	});
 });
@@ -109,7 +110,8 @@ test('get all materials', () => {
 	return store.dispatch(getMaterialsThunk()).then(() => {
 		expect(materialsApi.getMaterials).toBeCalledTimes(1);
 		expect(store.getState()).toEqual({
-			materials
+			materials,
+			currentMaterialId: null
 		});
 	});
 });
