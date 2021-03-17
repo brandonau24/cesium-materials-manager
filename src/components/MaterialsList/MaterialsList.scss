@@ -5,11 +5,14 @@
 	background-color: $dark-secondary;
 	border: 0.0625rem solid gray;
 	width: 15.625rem;
-	height: 18.75rem;
+	height: 20rem;
+	grid-auto-rows: 4rem;
+	overflow-y: auto;
 
 	.__no-materials {
 		justify-self: center;
 		align-self: center;
 		color: gray;
+		grid-row: 3;
 	}
 }

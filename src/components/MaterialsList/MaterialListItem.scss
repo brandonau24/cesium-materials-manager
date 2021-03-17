@@ -1,0 +1,11 @@
+@import 'styles/colors.scss';
+
+.material-list-item {
+	display: block;
+	background-color: $dark-secondary;
+	border-radius: 0;
+	width: 100%;
+	padding: 0;
+	border-bottom: 0.0625rem solid gray;
+	height: 4rem;
+}
