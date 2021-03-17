@@ -4,13 +4,14 @@ import { Provider } from 'react-redux';
 import { render as rtlRender } from '@testing-library/react';
 import { configureStore } from '@reduxjs/toolkit';
 import materialsReducer from 'reducers/materials';
+import currentMaterialIdReducer from 'reducers/currentMaterialId';
 
 function render(
 	ui,
 	{
 		preloadedState,
 		store = configureStore({
-			reducer: { materials: materialsReducer },
+			reducer: { materials: materialsReducer, currentMaterialId: currentMaterialIdReducer },
 			preloadedState
 		}),
 		...renderOptions
