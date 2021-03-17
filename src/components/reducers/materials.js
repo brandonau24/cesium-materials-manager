@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { addMaterialThunk, getMaterialsThunk } from 'thunks/materials';
+import { addMaterialThunk, getMaterialsThunk, deleteMaterialThunk } from 'thunks/materials';
 
 const initialState = [];
 
@@ -23,7 +23,9 @@ const materialsSlice = createSlice({
 		[addMaterialThunk.fulfilled]: (state, action) => {
 			state.push(action.payload);
 		},
-		[getMaterialsThunk.fulfilled]: (state, action) => action.payload
+		[getMaterialsThunk.fulfilled]: (state, action) => action.payload,
+		// eslint-disable-next-line max-len
+		[deleteMaterialThunk.fulfilled]: (state, action) => state.filter((material) => material.id !== action.payload)
 	}
 });
 

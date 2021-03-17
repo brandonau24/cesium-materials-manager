@@ -5,7 +5,7 @@ import { createSelector } from 'reselect';
 import MaterialsList from 'components/MaterialsList/MaterialsList';
 import Button from 'components/common/form/Button';
 import MaterialEditPanel from 'components/MaterialEditPanel/MaterialEditPanel';
-import { getMaterialsThunk, addMaterialThunk } from 'thunks/materials';
+import { getMaterialsThunk, addMaterialThunk, deleteMaterialThunk } from 'thunks/materials';
 
 import './CesiumMaterialsManager.scss';
 
@@ -30,6 +30,7 @@ const defaultMaterial = {
 };
 
 const CesiumMaterialsManager = () => {
+	const materialId = useSelector((state) => state.currentMaterialId);
 	const totalMaterialsCost = useSelector(totalMaterialsCostSelector, shallowEqual);
 	const dispatch = useDispatch();
 
@@ -39,6 +40,10 @@ const CesiumMaterialsManager = () => {
 
 	const addMaterialCallback = () => {
 		dispatch(addMaterialThunk(defaultMaterial));
+	};
+
+	const deleteMaterialCallback = () => {
+		dispatch(deleteMaterialThunk(materialId));
 	};
 
 	return (
@@ -53,7 +58,7 @@ const CesiumMaterialsManager = () => {
 				<Button
 					className="delete-button"
 					text="Delete"
-					onClickCallback={() => { }}
+					onClickCallback={deleteMaterialCallback}
 				/>
 			</div>
 			<div className="material-info-container">

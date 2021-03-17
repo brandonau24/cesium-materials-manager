@@ -1,5 +1,5 @@
 import React from 'react';
-// import userEvent from '@testing-library/user-event';
+import userEvent from '@testing-library/user-event';
 import { render, screen } from 'test-utils';
 import materialsApi from 'materialsApi';
 import CesiumMaterialsManager from '../CesiumMaterialsManager';
@@ -7,7 +7,7 @@ import CesiumMaterialsManager from '../CesiumMaterialsManager';
 const materials = [
 	{
 		id: '1',
-		name: 'material',
+		name: 'Gravel',
 		color: 'black',
 		costPerCubicMeter: 0.25,
 		volume: 1000,
@@ -64,6 +64,19 @@ test('gets all materials when component renders', () => {
 		expect(buttons.length).toBe(3);
 	});
 });
+
+// test('delete material', () => {
+// 	const preloadedState = { materials };
+
+// 	render(<CesiumMaterialsManager />, { preloadedState });
+
+// 	userEvent.click(screen.getByText(/Gravel/));
+// 	userEvent.click(screen.getByText(/Delete/));
+
+// 	return screen.findAllByTestId('material-list-item').then((materialListItems) => {
+// 		expect(materialListItems.length).toBe(2);
+// 	});
+// });
 
 // test('add material', () => {
 // 	render(<CesiumMaterialsManager />);
