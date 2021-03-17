@@ -48,3 +48,27 @@ test('renders material volume amount', () => {
 
 	expect(screen.getByText(/1000\sm3/)).toBeVisible();
 });
+
+test('material list item is selected and has dark blue background', () => {
+	const id = '1';
+
+	const material = {
+		id,
+		name: 'Gravel',
+		color: 'gray',
+		costPerCubicMeter: 0.25,
+		volume: 1000,
+		deliveryDate: '2021-3-15'
+	};
+
+	render(<MaterialListItem materialId={id} />, {
+		preloadedState: {
+			currentMaterialId: id,
+			materials: [material]
+		}
+	});
+
+	expect(screen.getByRole('button')).toHaveStyle({
+		backgroundColor: '#000042'
+	});
+});
