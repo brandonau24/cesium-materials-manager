@@ -2,12 +2,26 @@
 
 #cesium-materials-manager {
 	background-color: $dark-primary;
+	margin: auto 25%;
 
-	.add-button {
-		background-color: $positive-action;
+	.action-bar {
+		.add-button {
+			background-color: $positive-action;
+		}
+	
+		.delete-button {
+			background-color: $negative-action;
+			margin-left: 1rem;
+		}
 	}
 
-	.delete-button {
-		background-color: $negative-action;
+	.material-info-container {
+		display: flex;
+		flex-direction: row;
+
+		$margin-between: 2rem;
+
+		margin-top: $margin-between;
+		margin-bottom: $margin-between;
 	}
 }

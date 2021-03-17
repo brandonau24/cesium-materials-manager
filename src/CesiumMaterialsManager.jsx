@@ -44,18 +44,22 @@ const CesiumMaterialsManager = () => {
 	return (
 		<div id="cesium-materials-manager">
 			<h2>Materials</h2>
-			<Button
-				className="add-button"
-				text="Add"
-				onClickCallback={addMaterialCallback}
-			/>
-			<Button
-				className="delete-button"
-				text="Delete"
-				onClickCallback={() => { }}
-			/>
-			<MaterialsList />
-			<MaterialEditPanel />
+			<div className="action-bar">
+				<Button
+					className="add-button"
+					text="Add"
+					onClickCallback={addMaterialCallback}
+				/>
+				<Button
+					className="delete-button"
+					text="Delete"
+					onClickCallback={() => { }}
+				/>
+			</div>
+			<div className="material-info-container">
+				<MaterialsList />
+				<MaterialEditPanel />
+			</div>
 			<div className="__total-materials-cost">{`Total Cost: $${totalMaterialsCost}`}</div>
 		</div>
 	);
