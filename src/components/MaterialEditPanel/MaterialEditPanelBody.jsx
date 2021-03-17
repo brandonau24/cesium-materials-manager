@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React, { useEffect, useState, useRef } from 'react';
+import React from 'react';
 import { useDispatch, batch } from 'react-redux';
 import TextInputField from 'components/common/form/TextInputField';
 import ColorPicker from 'components/common/form/ColorPicker';
@@ -10,46 +10,11 @@ import { modifyMaterialThunk } from 'thunks/materials';
 const MaterialEditPanelBody = ({ material }) => {
 	const dispatch = useDispatch();
 
-	// const [material.name, setMaterial.name] = useState(material.name);
-	// const [material.color, setMaterial.color] = useState(material.color);
-	// const [material.deliveryDate, setMaterial.deliveryDate] = useState(material.deliveryDate);
-	// const [material.volume, setMaterial.volume] = useState(material.volume);
-	// eslint-disable-next-line max-len
-	//const [material.costPerCubicMeter, setMaterial.costPerCubicMeter] = useState(material.costPerCubicMeter);
-
-	// useEffect(() => {
-	// 	if (prevMaterialId === material.id) {
-	// 		const modifiedMaterial = {
-	// 			id: material.id,
-	// 			name: material.name,
-	// 			color: material.color,
-	// 			deliveryDate: material.deliveryDate,
-	// 			volume: material.volume,
-	// 			costPerCubicMeter: material.costPerCubicMeter
-	// 		};
-
-	// 		batch(() => {
-	// 			dispatch({
-	// 				type: 'materials/modify',
-	// 				payload: modifiedMaterial
-	// 			});
-
-	// 			dispatch(modifyMaterialThunk(modifiedMaterial));
-	// 		});
-	// 	}
-	// }, [material.name, material.color, material.deliveryDate, material.volume, material.costPerCubicMeter]);
-
 	const nameCallback = (name) => {
 		const modifiedMaterial = {
-			id: material.id,
-			name,
-			color: material.color,
-			deliveryDate: material.deliveryDate,
-			volume: material.volume,
-			costPerCubicMeter: material.costPerCubicMeter
+			...material,
+			name
 		};
-
-		// setMaterial.name(name);
 
 		batch(() => {
 			dispatch({
@@ -63,15 +28,9 @@ const MaterialEditPanelBody = ({ material }) => {
 
 	const colorCallback = (color) => {
 		const modifiedMaterial = {
-			id: material.id,
-			name: material.name,
-			color,
-			deliveryDate: material.deliveryDate,
-			volume: material.volume,
-			costPerCubicMeter: material.costPerCubicMeter
+			...material,
+			color
 		};
-
-		// setMaterial.color(color);
 
 		batch(() => {
 			dispatch({
@@ -85,15 +44,9 @@ const MaterialEditPanelBody = ({ material }) => {
 
 	const volumeCallback = (volume) => {
 		const modifiedMaterial = {
-			id: material.id,
-			name: material.name,
-			color: material.color,
-			deliveryDate: material.deliveryDate,
-			volume,
-			costPerCubicMeter: material.costPerCubicMeter
+			...material,
+			volume
 		};
-
-		// setMaterial.volume(volume);
 
 		batch(() => {
 			dispatch({
@@ -107,15 +60,9 @@ const MaterialEditPanelBody = ({ material }) => {
 
 	const costPerCubicMeterCallback = (costPerCubicMeter) => {
 		const modifiedMaterial = {
-			id: material.id,
-			name: material.name,
-			color: material.color,
-			deliveryDate: material.deliveryDate,
-			volume: material.volume,
+			...material,
 			costPerCubicMeter
 		};
-
-		// setMaterial.costPerCubicMeter(costPerCubicMeter);
 
 		batch(() => {
 			dispatch({
@@ -129,15 +76,9 @@ const MaterialEditPanelBody = ({ material }) => {
 
 	const deliveryDateCallback = (deliveryDate) => {
 		const modifiedMaterial = {
-			id: material.id,
-			name: material.name,
-			color: material.color,
-			deliveryDate,
-			volume: material.volume,
-			costPerCubicMeter: material.costPerCubicMeter
+			...material,
+			deliveryDate
 		};
-
-		// setMaterial.deliveryDate(deliveryDate);
 
 		batch(() => {
 			dispatch({
@@ -154,13 +95,13 @@ const MaterialEditPanelBody = ({ material }) => {
 			<TextInputField
 				id="name-field"
 				label="Name"
-				defaultInputValue={material.name}
+				value={material.name}
 				onChangeCallback={nameCallback}
 			/>
 			<ColorPicker
 				id="color-picker"
 				label="Color"
-				defaultColor={material.color}
+				value={material.color}
 				onChangeCallback={colorCallback}
 			/>
 			<NumberField
@@ -172,7 +113,7 @@ const MaterialEditPanelBody = ({ material }) => {
 						)
 					</>
 				)}
-				defaultNumberValue={material.volume}
+				value={Number.parseFloat(material.volume)}
 				min={0}
 				onChangeCallback={volumeCallback}
 			/>
@@ -186,14 +127,14 @@ const MaterialEditPanelBody = ({ material }) => {
 					</>
 				)}
 				step={0.10}
-				defaultNumberValue={material.costPerCubicMeter}
+				value={Number.parseFloat(material.costPerCubicMeter)}
 				min={0}
 				onChangeCallback={costPerCubicMeterCallback}
 			/>
 			<DatePicker
 				id="delivery-date-picker"
 				label="Delivery Date"
-				defaultDate={material.deliveryDate}
+				value={material.deliveryDate}
 				onChangeCallback={deliveryDateCallback}
 			/>
 		</>

@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 const NumberField = ({
@@ -7,22 +7,18 @@ const NumberField = ({
 	onChangeCallback,
 	label,
 	step,
-	defaultNumberValue,
+	value,
 	min,
 	...restProps
 }) => {
-	const [numberValue, setNumberValue] = useState(defaultNumberValue);
-
-	const onNumberValueChange = (event) => setNumberValue(Number.parseFloat(event.target.value));
-
-	useEffect(() => {
-		onChangeCallback(numberValue);
-	}, [numberValue]);
+	const onNumberValueChange = (event) => {
+		onChangeCallback(event.target.value);
+	};
 
 	return (
 		<>
 			<label htmlFor={id}>{label}</label>
-			<input id={id} value={numberValue} type="number" min={min} step={step} onChange={onNumberValueChange} {...restProps} />
+			<input id={id} value={value} type="number" min={min} step={step} onChange={onNumberValueChange} {...restProps} />
 		</>
 	);
 };
@@ -32,14 +28,14 @@ NumberField.propTypes = {
 	label: PropTypes.node.isRequired,
 	step: PropTypes.number,
 	onChangeCallback: PropTypes.func,
-	defaultNumberValue: PropTypes.number,
+	value: PropTypes.number,
 	min: PropTypes.number
 };
 
 NumberField.defaultProps = {
 	step: 1,
 	onChangeCallback: () => { },
-	defaultNumberValue: 0,
+	value: 0,
 	min: 0
 };
 

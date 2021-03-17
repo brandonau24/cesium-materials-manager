@@ -1,26 +1,22 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 const DatePicker = ({
 	id,
 	onChangeCallback,
 	label,
-	defaultDate,
+	value,
 	...restProps
 }) => {
-	const [date, setDate] = useState(defaultDate);
-
-	const onDateChange = (event) => setDate(event.target.value);
-
-	useEffect(() => {
-		onChangeCallback(date);
-	}, [date]);
+	const onDateChange = (event) => {
+		onChangeCallback(event.target.value);
+	};
 
 	return (
 		<>
 			<label htmlFor={id}>{label}</label>
-			<input id={id} value={date} type="date" onChange={onDateChange} {...restProps} />
+			<input id={id} value={value} type="date" onChange={onDateChange} {...restProps} />
 		</>
 	);
 };
@@ -29,12 +25,12 @@ DatePicker.propTypes = {
 	id: PropTypes.string.isRequired,
 	label: PropTypes.string.isRequired,
 	onChangeCallback: PropTypes.func,
-	defaultDate: PropTypes.string
+	value: PropTypes.string
 };
 
 DatePicker.defaultProps = {
 	onChangeCallback: () => { },
-	defaultDate: new Date(Date.now()).toISOString().split('T')[0]
+	value: new Date(Date.now()).toISOString().split('T')[0]
 };
 
 export default DatePicker;

@@ -1,26 +1,22 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 const TextInputField = ({
 	id,
 	onChangeCallback,
 	label,
-	defaultInputValue,
+	value,
 	...restProps
 }) => {
-	const [inputValue, setInputValue] = useState(defaultInputValue);
-
-	const onInputValueChange = (event) => setInputValue(event.target.value);
-
-	useEffect(() => {
-		onChangeCallback(inputValue);
-	}, [inputValue]);
+	const onInputValueChange = (event) => {
+		onChangeCallback(event.target.value);
+	};
 
 	return (
 		<>
 			<label htmlFor={id}>{label}</label>
-			<input id={id} value={inputValue} type="text" onChange={onInputValueChange} {...restProps} />
+			<input id={id} value={value} type="text" onChange={onInputValueChange} {...restProps} />
 		</>
 	);
 };
@@ -29,12 +25,12 @@ TextInputField.propTypes = {
 	id: PropTypes.string.isRequired,
 	label: PropTypes.string.isRequired,
 	onChangeCallback: PropTypes.func,
-	defaultInputValue: PropTypes.string
+	value: PropTypes.string
 };
 
 TextInputField.defaultProps = {
 	onChangeCallback: () => { },
-	defaultInputValue: ''
+	value: ''
 };
 
 export default TextInputField;
