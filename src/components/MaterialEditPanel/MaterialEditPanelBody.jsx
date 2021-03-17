@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
+import PropTypes from 'prop-types';
 import { useDispatch, batch } from 'react-redux';
 import TextInputField from 'components/common/form/TextInputField';
 import ColorPicker from 'components/common/form/ColorPicker';
@@ -142,6 +142,16 @@ const MaterialEditPanelBody = ({ material }) => {
 			/>
 		</>
 	);
+};
+
+MaterialEditPanelBody.propTypes = {
+	material: PropTypes.shape({
+		name: PropTypes.string,
+		color: PropTypes.string,
+		volume: PropTypes.number,
+		costPerCubicMeter: PropTypes.number,
+		deliveryDate: PropTypes.string
+	}).isRequired
 };
 
 export default MaterialEditPanelBody;
