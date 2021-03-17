@@ -31,9 +31,13 @@ const MaterialListItem = ({ materialId }) => {
 			type="button"
 			style={style}
 		>
-			<div className="circle" data-testid="material-color" style={{ color: material.color }} />
-			<div>{material.name}</div>
-			<div>{`${material.volume} m3`}</div>
+			<div className="__info">
+				<div className="circle" data-testid="material-color" style={{ backgroundColor: material.color }} />
+				<div className="__info-text">
+					<div className="material__name">{material.name}</div>
+					<div className="material__volume">{`${material.volume} m3`}</div>
+				</div>
+			</div>
 		</button>
 	);
 };

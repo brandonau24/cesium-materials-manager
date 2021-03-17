@@ -15,7 +15,9 @@ test('renders color of material', () => {
 	render(<MaterialListItem materialId="1" />, { preloadedState: { materials: [material] } });
 
 	const materialColorElement = screen.getByTestId('material-color');
-	expect(materialColorElement).toHaveStyle('color: gray');
+	expect(materialColorElement).toHaveStyle({
+		backgroundColor: 'gray'
+	});
 	expect(materialColorElement).toHaveClass('circle');
 });
 

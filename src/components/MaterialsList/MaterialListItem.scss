@@ -1,4 +1,5 @@
 @import 'styles/colors.scss';
+@import 'styles/shapes.scss';
 
 .material-list-item {
 	display: block;
@@ -8,4 +9,30 @@
 	padding: 0;
 	border-bottom: 0.0625rem solid gray;
 	height: 4rem;
+
+	.__info {
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-start;
+		align-items: center;
+		margin-left: 0.5rem;
+
+		.circle {
+			@include circle(2.5rem, 2.5rem);
+			border: 0.0625rem solid black;
+		}
+
+		&-text {
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-start;
+			margin-left: 0.5rem;
+		}
+
+		.material {
+			&__volume {
+				text-align: initial;
+			}
+		}
+	}
 }
