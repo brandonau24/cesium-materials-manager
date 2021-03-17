@@ -10,10 +10,10 @@ import { getMaterialsThunk, addMaterialThunk } from 'thunks/materials';
 import './CesiumMaterialsManager.scss';
 
 const totalMaterialsCostSelector = createSelector(
-	(state) => state.materials.map((material) => (material.costPerCubicMeter * material.volume)),
-	(materialCosts) => {
-		const totalMaterialsCost = materialCosts.reduce(
-			(totalCost, materialCost) => totalCost + materialCost,
+	(state) => state.materials,
+	(materials) => {
+		const totalMaterialsCost = materials.reduce(
+			(totalCost, material) => totalCost + (material.volume * material.costPerCubicMeter),
 			0
 		);
 
