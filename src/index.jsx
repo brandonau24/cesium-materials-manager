@@ -9,14 +9,7 @@ import store from './cesiumMaterialsManager/store';
 const container = document.querySelector('#container');
 
 if (module.hot) {
-	module.hot.accept('./CesiumMaterialsManager', () => {
-		ReactDOM.render(
-			<Provider store={store}>
-				<CesiumMaterialsManager />
-			</Provider>,
-			container
-		);
-	});
+	module.hot.accept();
 }
 
 ReactDOM.render(
