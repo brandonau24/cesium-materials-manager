@@ -93,54 +93,58 @@ const MaterialEditPanelBody = ({ material }) => {
 	};
 
 	return (
-		<>
-			<TextInputField
-				id="name-field"
-				label="Name"
-				value={material.name}
-				onChangeCallback={nameCallback}
-			/>
-			<ColorPicker
-				className="circle"
-				id="color-picker"
-				label="Color"
-				value={material.color}
-				onChangeCallback={colorCallback}
-			/>
-			<NumberField
-				id="volume-field"
-				label={(
-					<>
-						Volume (m
-						<sup>3</sup>
-						)
-					</>
-				)}
-				value={Number.parseFloat(material.volume)}
-				min={0}
-				onChangeCallback={volumeCallback}
-			/>
-			<NumberField
-				id="cost-field"
-				label={(
-					<>
-						Cost (USD per m
-						<sup>3</sup>
-						)
-					</>
-				)}
-				step={0.10}
-				value={Number.parseFloat(material.costPerCubicMeter)}
-				min={0}
-				onChangeCallback={costPerCubicMeterCallback}
-			/>
-			<DatePicker
-				id="delivery-date-picker"
-				label="Delivery Date"
-				value={material.deliveryDate}
-				onChangeCallback={deliveryDateCallback}
-			/>
-		</>
+		<div className="material-edit-panel-body">
+			<div className="__col-1">
+				<TextInputField
+					id="name-field"
+					label="Name"
+					value={material.name}
+					onChangeCallback={nameCallback}
+				/>
+				<NumberField
+					id="volume-field"
+					label={(
+						<>
+							Volume (m
+							<sup>3</sup>
+							)
+						</>
+					)}
+					value={Number.parseFloat(material.volume)}
+					min={0}
+					onChangeCallback={volumeCallback}
+				/>
+				<DatePicker
+					id="delivery-date-picker"
+					label="Delivery Date"
+					value={material.deliveryDate}
+					onChangeCallback={deliveryDateCallback}
+				/>
+			</div>
+			<div className="__col-2">
+				<ColorPicker
+					id="color-picker"
+					label="Color"
+					value={material.color}
+					onChangeCallback={colorCallback}
+				/>
+
+				<NumberField
+					id="cost-field"
+					label={(
+						<>
+							Cost (USD per m
+							<sup>3</sup>
+							)
+						</>
+					)}
+					step={0.10}
+					value={Number.parseFloat(material.costPerCubicMeter)}
+					min={0}
+					onChangeCallback={costPerCubicMeterCallback}
+				/>
+			</div>
+		</div>
 	);
 };
 

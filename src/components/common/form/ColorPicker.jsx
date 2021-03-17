@@ -14,10 +14,10 @@ const ColorPicker = ({
 	};
 
 	return (
-		<>
+		<div>
 			<label htmlFor={id}>{label}</label>
 			<input id={id} value={value} type="color" onChange={onColorChange} {...restProps} />
-		</>
+		</div>
 	);
 };
 

@@ -14,10 +14,10 @@ const TextInputField = ({
 	};
 
 	return (
-		<>
+		<div>
 			<label htmlFor={id}>{label}</label>
 			<input id={id} value={value} type="text" onChange={onInputValueChange} {...restProps} />
-		</>
+		</div>
 	);
 };
 

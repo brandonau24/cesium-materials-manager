@@ -14,10 +14,10 @@ const DatePicker = ({
 	};
 
 	return (
-		<>
+		<div>
 			<label htmlFor={id}>{label}</label>
 			<input id={id} value={value} type="date" onChange={onDateChange} {...restProps} />
-		</>
+		</div>
 	);
 };
 

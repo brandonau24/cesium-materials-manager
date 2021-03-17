@@ -12,14 +12,14 @@ const NumberField = ({
 	...restProps
 }) => {
 	const onNumberValueChange = (event) => {
-		onChangeCallback(event.target.value);
+		onChangeCallback(Number.parseFloat(event.target.value));
 	};
 
 	return (
-		<>
+		<div>
 			<label htmlFor={id}>{label}</label>
 			<input id={id} value={value} type="number" min={min} step={step} onChange={onNumberValueChange} {...restProps} />
-		</>
+		</div>
 	);
 };
 
