@@ -10,6 +10,7 @@ const basePath = '/materials';
 let materials = [];
 
 apiServer.get(basePath, (request, response) => {
+	console.log('GET all materials', materials);
 	response.json(materials);
 });
 
@@ -25,6 +26,8 @@ apiServer.put(`${basePath}/:id`, (request, response) => {
 			...request.body
 		};
 
+		console.log('PUT material', materials[materialIndex]);
+
 		response.sendStatus(204);
 	} else {
 		response.send(404, `Material with id ${materialId} was not found`);
@@ -37,6 +40,8 @@ apiServer.post(basePath, (request, response) => {
 		id: uuidv4()
 	};
 
+	console.log('POST material', newMaterial);
+
 	materials.push(newMaterial);
 
 	response.status(201).json(newMaterial);
@@ -45,6 +50,8 @@ apiServer.post(basePath, (request, response) => {
 apiServer.delete(`${basePath}/:id`, (request, response) => {
 	const materialToDelete = request.params.id;
 	materials = materials.filter((material) => material.id !== materialToDelete);
+
+	console.log('DELETE material', materialToDelete);
 
 	response.sendStatus(204);
 });
