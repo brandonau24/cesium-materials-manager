@@ -5,8 +5,10 @@ I used node v12.18.2 at the time of implementing this. This projet definitely to
 My biggest mistake was probably spending an hour on the webpack configuration.
 
 ## How to run
-1. In one terminal, go into the api directory and run `node api.js`. This will start the mock API server.
-2. At the root of this project, start the webpack development server with `yarn dev` in another terminal instance.
+1. In one terminal, go into the api directory and install dependencies for the api server with `yarn install` or `npm install` 
+2. Once the above finishes, change to the root of the project and install dependencies for the web app.
+3. In one terminal, go into the api directory and run `node api.js`. 
+4. At the root of this project, start the webpack development server with `yarn dev` in another terminal instance.
 
 ## Outstanding Questions
 * As a geospatial platform, I'm sure Cesium has dealt with requests from all over the world. Does that mean for the purpose of this exercise that USD currency is not the only currency to support?
@@ -15,7 +17,7 @@ My biggest mistake was probably spending an hour on the webpack configuration.
 ## Design Decisions
 * For updating the material on the fly, I essentially just hit the redux store and API on every keystroke/color/date change which you can see [in MaterialEditPanelBody](./src/components/MaterialEditPanel/MaterialEditPanelBody.jsx). This is obviously a performance bottleneck in the network layer since it is making a PUT request for every change. I would have liked to minimize the amount of network requests as much as possible, but for the purpose of this exercise, I left it alone.
 
-* Instead of mapping each material to have its own editing panel, I wanted to render one panel and dynamically load in the data depending on the material t hat was clicked. What I've done was set in the store which material was clicked on (by ID) with my [currentMaterialIdReducer](./src/components/reducers/currentMaterialId.js). The action for this reducer gets fired off on every click by [MaterialListItem](./src/components/MaterialsList/MaterialListItem.jsx). Then, components depending on current material viewed can simply hook into Redux and pull out the ID.
+* Instead of mapping each material to have its own editing panel, I wanted to render one panel and dynamically load in the data depending on the material that was clicked. What I've done was set in the store which material was clicked on (by ID) with my [currentMaterialIdReducer](./src/components/reducers/currentMaterialId.js). The action for this reducer gets fired off on every click by [MaterialListItem](./src/components/MaterialsList/MaterialListItem.jsx). Then, components depending on current material viewed can simply hook into Redux and pull out the ID.
 
 * I wish my state was shaped better. This is what it looks like currently:
 	```
