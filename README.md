@@ -1,6 +1,6 @@
 # Cesium Materials Manager
 
-I used node v12.18.2 at the time of implementing this. This projet definitely took me longer than 2-3 hours. If I were to guess, I probably spent a 10 hours on it.
+I used node v12.18.2 at the time of implementing this. This project definitely took me longer than 2-3 hours. If I were to guess, I probably spent a 10 hours on it.
 
 My biggest mistake was probably spending an hour on the webpack configuration.
 
