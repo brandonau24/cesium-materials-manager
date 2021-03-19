@@ -13,6 +13,8 @@ My biggest mistake was probably spending an hour on the webpack configuration.
 ## Outstanding Questions
 * As a geospatial platform, I'm sure Cesium has dealt with requests from all over the world. Does that mean for the purpose of this exercise that USD currency is not the only currency to support?
 * What are the designs for mobile view? Should every application at Cesium be developed with a mobile-friendly view?
+* Should users be allowed to delete a material without confirmation? It seems unsafe to allow users to just delete without making sure that is the action they wanted.
+* What is the target browser environment? Modern browsers excluding Internet Explorer? Every browser possible?
 
 ## Design Decisions
 * For updating the material on the fly, I essentially just hit the redux store and API on every keystroke/color/date change which you can see [in MaterialEditPanelBody](./src/components/MaterialEditPanel/MaterialEditPanelBody.jsx). This is obviously a performance bottleneck in the network layer since it is making a PUT request for every change. I would have liked to minimize the amount of network requests as much as possible, but for the purpose of this exercise, I left it alone.
@@ -39,7 +41,6 @@ My biggest mistake was probably spending an hour on the webpack configuration.
 			}
 		}
 	```
-* Should users be allowed to delete a material without confirmation? It seems unsafe to allow users to just delete without making sure that is the action they wanted.
 
 ## What I wish was completed
 * Error states
